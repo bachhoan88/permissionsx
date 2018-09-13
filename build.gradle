@@ -39,6 +39,6 @@ ext {
     androidx_support_library_version = '1.0.0-rc02'
     androidx_core = '0.3'
 
-    compileSdk = 27
-    targetSdk = 27
+    compileSdk = 28
+    targetSdk = 28
 }

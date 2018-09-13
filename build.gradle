@@ -26,9 +26,9 @@ ext {
     projectName = 'EasyPermissions'
     projectDesc = 'A wrapper library for basic Android M system permissions logic'
 
-    githubUrl = 'https://github.com/bachhoan88/easypermissions'
+    githubUrl = 'https://github.com/bachhoan88/permissionsx'
 
-    mavenGroup = 'com.github.bachhoan88'
+    mavenGroup = 'bach.dev'
     mavenArtifactId = 'easypermissionsx'
     mavenVersion = '1.3.0'
 

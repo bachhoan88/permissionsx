@@ -7,11 +7,10 @@ Android M or higher.
 Add it in your root build.gradle at the end of repositories:
 ```groovy
 allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
+	repositories {
+		maven { url 'https://jitpack.io' }
 	}
+}
 ```
 
 EasyPermissions is installed by adding the following dependency to your `build.gradle` file:

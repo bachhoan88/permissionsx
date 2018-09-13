@@ -17,7 +17,7 @@ dependencies {
 
 ### Basic
 
-To begin using EasyPermissions, have your `Activity` (or `Fragment`) override the `onRequestPermissionsResult` method:
+To begin using EasyPermissions, have your `Activity` (or `Fragment` or `androidx.fragment.app.Fragment`)  override the `onRequestPermissionsResult` method:
 
 ```java
 public class MainActivity extends AppCompatActivity {
@@ -82,7 +82,7 @@ EasyPermissions.requestPermissions(
                 .build());
 ```
 
-Optionally, for a finer control, you can have your `Activity` / `Fragment` implement
+Optionally, for a finer control, you can have your `Activity` / `Fragment` / `androidx.fragment.app.Fragment` implement
 the `PermissionCallbacks` interface.
 
 ```java

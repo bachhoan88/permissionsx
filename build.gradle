@@ -29,7 +29,7 @@ ext {
     githubUrl = 'https://github.com/bachhoan88/permissionsx'
 
     mavenGroup = 'bach.dev'
-    mavenArtifactId = 'easypermissionsx'
+    mavenArtifactId = 'permissionsx'
     mavenVersion = '1.3.0'
 
     bintrayOrg = 'bachdev'

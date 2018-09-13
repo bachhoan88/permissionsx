@@ -34,7 +34,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
-
 import pub.devrel.easypermissions.helper.PermissionHelper;
 
 /**
@@ -133,10 +132,25 @@ public class EasyPermissions {
     }
 
     /**
+     * Request permissions from a Support Fragment with standard OK/Cancel buttons.
+     *
+     * @see #requestPermissions(Activity, String, int, String...)
+     */
+    public static void requestPermissions(
+            @NonNull androidx.fragment.app.Fragment host, @NonNull String rationale,
+            int requestCode, @Size(min = 1) @NonNull String... perms) {
+        requestPermissions(
+                new PermissionRequest.Builder(host, requestCode, perms)
+                        .setRationale(rationale)
+                        .build());
+    }
+
+    /**
      * Request permissions from a standard Fragment with standard OK/Cancel buttons.
      *
      * @see #requestPermissions(Activity, String, int, String...)
      */
+    @Deprecated
     public static void requestPermissions(
             @NonNull android.app.Fragment host, @NonNull String rationale,
             int requestCode, @Size(min = 1) @NonNull String... perms) {

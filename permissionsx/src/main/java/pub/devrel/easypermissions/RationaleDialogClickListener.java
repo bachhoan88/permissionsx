@@ -20,14 +20,25 @@ class RationaleDialogClickListener implements Dialog.OnClickListener {
     private EasyPermissions.PermissionCallbacks mCallbacks;
     private EasyPermissions.RationaleCallbacks mRationaleCallbacks;
 
-    RationaleDialogClickListener(RationaleDialogFragmentCompat compatDialogFragment,
+    RationaleDialogClickListener(Object dialogFragment,
                                  RationaleDialogConfig config,
                                  EasyPermissions.PermissionCallbacks callbacks,
                                  EasyPermissions.RationaleCallbacks rationaleCallbacks) {
 
-        mHost = compatDialogFragment.getParentFragment() != null
-                ? compatDialogFragment.getParentFragment()
-                : compatDialogFragment.getActivity();
+        if (dialogFragment instanceof RationaleDialogFragmentCompat) {
+            RationaleDialogFragmentCompat compatDialogFragment = (RationaleDialogFragmentCompat) dialogFragment;
+            mHost = compatDialogFragment.getParentFragment() != null
+                    ? compatDialogFragment.getParentFragment()
+                    : compatDialogFragment.getActivity();
+        } else if (dialogFragment instanceof RationaleDialogFragmentX) {
+            RationaleDialogFragmentX compatDialogFragment = (RationaleDialogFragmentX) dialogFragment;
+            mHost = compatDialogFragment.getParentFragment() != null
+                    ? compatDialogFragment.getParentFragment()
+                    : compatDialogFragment.getActivity();
+        }
+
+
+        if (mHost == null) return;
 
         mConfig = config;
         mCallbacks = callbacks;
@@ -62,11 +73,18 @@ class RationaleDialogClickListener implements Dialog.OnClickListener {
                 mRationaleCallbacks.onRationaleAccepted(requestCode);
             }
             if (mHost instanceof Fragment) {
-                PermissionHelper.newInstance((Fragment) mHost).directRequestPermissions(requestCode, permissions);
+                PermissionHelper.newInstance((Fragment) mHost)
+                        .directRequestPermissions(requestCode, permissions);
+            } else if (mHost instanceof androidx.fragment.app.Fragment) {
+                PermissionHelper.newInstance((androidx.fragment.app.Fragment) mHost)
+                        .directRequestPermissions(requestCode, permissions);
             } else if (mHost instanceof android.app.Fragment) {
-                PermissionHelper.newInstance((android.app.Fragment) mHost).directRequestPermissions(requestCode, permissions);
+                PermissionHelper.newInstance((android.app.Fragment) mHost)
+                        .directRequestPermissions(requestCode,
+                                permissions);
             } else if (mHost instanceof Activity) {
-                PermissionHelper.newInstance((Activity) mHost).directRequestPermissions(requestCode, permissions);
+                PermissionHelper.newInstance((Activity) mHost)
+                        .directRequestPermissions(requestCode, permissions);
             } else {
                 throw new RuntimeException("Host must be an Activity or Fragment!");
             }

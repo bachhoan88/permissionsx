@@ -32,6 +32,8 @@ dependencies {
     api "com.android.support:appcompat-v7:$support_library_version"
     api "com.android.support:support-compat:$support_library_version"
     api "com.android.support:support-fragment:$support_library_version"
+    api "androidx.core:core-ktx:$androidx_core"
+    api "androidx.appcompat:appcompat:$androidx_support_library_version"
 
     testImplementation 'junit:junit:4.12'
     testImplementation 'com.google.truth:truth:0.42'

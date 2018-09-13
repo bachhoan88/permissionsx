@@ -40,6 +40,17 @@ public abstract class PermissionHelper<T> {
     }
 
     @NonNull
+    public static PermissionHelper<androidx.fragment.app.Fragment> newInstance(androidx.fragment.app.Fragment host) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            return new LowApiPermissionsHelper<>(host);
+        }
+
+        return new SupportFragmentXPermissionHelper(host);
+    }
+
+
+    @Deprecated
+    @NonNull
     public static PermissionHelper<android.app.Fragment> newInstance(android.app.Fragment host) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             return new LowApiPermissionsHelper<>(host);

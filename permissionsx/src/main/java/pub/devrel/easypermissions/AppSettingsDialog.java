@@ -91,6 +91,8 @@ public class AppSettingsDialog implements Parcelable {
 
         if (activityOrFragment instanceof Activity) {
             mContext = (Activity) activityOrFragment;
+        } else if (activityOrFragment instanceof androidx.fragment.app.Fragment) {
+            mContext = ((androidx.fragment.app.Fragment) activityOrFragment).getActivity();
         } else if (activityOrFragment instanceof Fragment) {
             mContext = ((Fragment) activityOrFragment).getContext();
         } else if (activityOrFragment instanceof android.app.Fragment) {
@@ -103,6 +105,8 @@ public class AppSettingsDialog implements Parcelable {
     private void startForResult(Intent intent) {
         if (mActivityOrFragment instanceof Activity) {
             ((Activity) mActivityOrFragment).startActivityForResult(intent, mRequestCode);
+        } else if (mActivityOrFragment instanceof androidx.fragment.app.Fragment) {
+            ((androidx.fragment.app.Fragment) mActivityOrFragment).startActivityForResult(intent, mRequestCode);
         } else if (mActivityOrFragment instanceof Fragment) {
             ((Fragment) mActivityOrFragment).startActivityForResult(intent, mRequestCode);
         } else if (mActivityOrFragment instanceof android.app.Fragment) {

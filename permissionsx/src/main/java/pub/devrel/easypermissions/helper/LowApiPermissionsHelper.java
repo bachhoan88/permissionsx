@@ -38,6 +38,8 @@ class LowApiPermissionsHelper<T> extends PermissionHelper<T> {
     public Context getContext() {
         if (getHost() instanceof Activity) {
             return (Context) getHost();
+        } else if (getHost() instanceof androidx.fragment.app.Fragment) {
+            return ((androidx.fragment.app.Fragment) getHost()).getActivity();
         } else if (getHost() instanceof Fragment) {
             return ((Fragment) getHost()).getContext();
         } else if (getHost() instanceof android.app.Fragment) {

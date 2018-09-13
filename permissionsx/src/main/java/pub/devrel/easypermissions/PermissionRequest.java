@@ -153,6 +153,17 @@ public final class PermissionRequest {
         /**
          * @see #Builder(Activity, int, String...)
          */
+        public Builder(@NonNull androidx.fragment.app.Fragment fragment, int requestCode,
+                       @NonNull @Size(min = 1) String... perms) {
+            mHelper = PermissionHelper.newInstance(fragment);
+            mRequestCode = requestCode;
+            mPerms = perms;
+        }
+
+        /**
+         * @see #Builder(Activity, int, String...)
+         */
+        @Deprecated
         public Builder(@NonNull android.app.Fragment fragment, int requestCode,
                        @NonNull @Size(min = 1) String... perms) {
             mHelper = PermissionHelper.newInstance(fragment);

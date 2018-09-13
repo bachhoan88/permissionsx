@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.StyleRes;
 import android.support.v7.app.AlertDialog;
-
 /**
  * Configuration for either {@link RationaleDialogFragment} or {@link RationaleDialogFragmentCompat}.
  */

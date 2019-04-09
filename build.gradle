@@ -1,0 +1,44 @@
+buildscript {
+    repositories {
+        jcenter()
+        google()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.3.2'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
+        classpath 'com.dicedmelon.gradle:jacoco-android:0.1.3'
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        google()
+        maven { url 'https://jitpack.io' }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+ext {
+    projectName = 'PermissionX'
+    projectDesc = 'A wrapper library for basic Android M system permissions logic'
+
+    githubUrl = 'https://github.com/bachhoan88/permissionsx'
+
+    mavenGroup = 'com.github.bachhoan88'
+    mavenArtifactId = 'permissionsx'
+    mavenVersion = '1.3.2'
+
+    bintrayOrg = 'bachdev'
+
+    support_library_version = '27.1.1'
+    androidx_support_library_version = '1.0.0-rc02'
+    androidx_core = '0.3'
+
+    compileSdk = 28
+    targetSdk = 28
+}
